@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Second Brain</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">🧠 Second Brain</div>
+    <nav id="tabs">
+      <button data-view="today" class="active">Today</button>
+      <button data-view="plan">Plan</button>
+      <button data-view="tasks">All tasks</button>
+      <button data-view="import">Import syllabus</button>
+      <button data-view="settings">Settings</button>
+    </nav>
+    <button id="addBtn" class="primary">+ Add</button>
+  </header>
+
+  <main id="view"></main>
+  <div id="toast" hidden></div>
+
+  <dialog id="taskDialog">
+    <form id="taskForm" method="dialog">
+      <h2 id="taskDialogTitle">Add task</h2>
+      <label>Title <input name="title" required placeholder="Problem Set 3"></label>
+      <div class="row">
+        <label>Course <select name="courseId"></select></label>
+        <label>Type
+          <select name="type">
+            <option value="assignment">Assignment</option>
+            <option value="exam">Exam</option>
+            <option value="quiz">Quiz</option>
+            <option value="project">Project</option>
+            <option value="reading">Reading</option>
+            <option value="other">Other</option>
+          </select>
+        </label>
+      </div>
+      <div class="row">
+        <label>Due (leave empty if TBA) <input name="due" type="datetime-local"></label>
+        <label>Est. hours of work <input name="estHours" type="number" min="0" step="0.5" placeholder="auto"></label>
+      </div>
+      <div class="row">
+        <label>Hours done so far <input name="progressHours" type="number" min="0" step="0.25"></label>
+        <label>Grade weight % <input name="weight" type="number" min="0" step="0.5" placeholder="optional"></label>
+      </div>
+      <label>Notes <textarea name="notes" rows="3" placeholder="Topics, submission link, etc."></textarea></label>
+      <div class="actions">
+        <button type="button" id="deleteTask" class="danger">Delete</button>
+        <span class="spacer"></span>
+        <button type="button" id="cancelTask">Cancel</button>
+        <button type="submit" class="primary">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="planner.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
